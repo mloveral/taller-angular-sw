@@ -10,8 +10,12 @@ import { SerieService } from '../serie.service';
 })
 export class SeriesListarComponent implements OnInit {
   series: Array<Serie> = [];
+
   totalSeasons: number = 0;
   averageSeasons: number = 0;
+  
+  selected: Boolean = false;
+  selectedSerie!: Serie;
 
   constructor(private serieService: SerieService) { }
 
@@ -32,6 +36,11 @@ export class SeriesListarComponent implements OnInit {
       );
       this.averageSeasons = this.totalSeasons / this.series.length
     };
+  }
+
+  onSelected(serie: Serie) {
+    this.selected = true;
+    this.selectedSerie = serie;
   }
 
   ngOnInit() {
